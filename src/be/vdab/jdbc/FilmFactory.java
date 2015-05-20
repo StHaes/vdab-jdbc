@@ -68,12 +68,29 @@ public class FilmFactory implements FilmDao {
     public boolean deleteFilm(int id) {
         try {
             PreparedStatement p = c.prepareStatement("delete from film where film_id = ?");
-            p.setInt(1,id);
+            p.setInt(1, id);
             return p.executeUpdate() == 1;
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return false;
+    }
+
+    @Override
+    public List<Actor> findAllActors(int id) {
+        try {
+        PreparedStatement p = c.prepareStatement("SELECT * FROM actor a join film_actor fa on a.actor_id = fa.actor_id where fa.film_id = ?");
+            p.setInt(1, id);
+        ResultSet r = p.executeQuery();
+        List l = new ArrayList<Actor>();
+        while (r.next()) {
+            l.add(new Actor(r.getString("first_name"), r.getString("last_name"), r.getInt("actor_id")));
+        }
+        return l;
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    return null;
     }
 
     private static Connection createConnection() {

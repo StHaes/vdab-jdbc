@@ -7,6 +7,7 @@ public class Film {
     private String title;
     private String releaseyear;
     private int filmid;
+    private Actor [] actors;
 
 
     public Film(String title, String releaseyear, int filmid) {

@@ -33,4 +33,6 @@ public interface FilmDao {
      * @return true in case of success.
      */
     boolean deleteFilm(int id);
+
+    List<Actor> findAllActors(int id);
 }

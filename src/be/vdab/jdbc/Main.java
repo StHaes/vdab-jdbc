@@ -8,8 +8,8 @@ public class Main {
 
         FilmFactory factory = new FilmFactory();
         //System.out.println(factory.findAllFilms().toString());
-        Film f = new Film("Vanilla Unicorn", "2015", 1);
-        System.out.println(factory.updateFilm(f));
+
+        System.out.println(factory.findAllActors(148).toString());
 
         //FilmDao dao = null; // instantiate a new JdbcFilmDao
 
